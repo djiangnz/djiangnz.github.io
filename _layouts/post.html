@@ -21,7 +21,6 @@ layout: default
 </section>
 
 <section>
-
   <nav class="post-nav">
     {% if page.previous %}
     <a class="post-nav-item post-nav-prev" href="{{ page.previous | relative_url }}">
@@ -34,7 +33,6 @@ layout: default
       <span class="post-title">{{ page.next.title }}</span>
     </a>
     {% endif %}
-
   </nav>
 </section>
 {% include disqus.html %}
