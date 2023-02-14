@@ -1,4 +1,10 @@
-# NSPredicate Cheatsheet
+---
+layout: post
+title: NSPredicate Cheatsheet
+description:
+summary:
+tags: cheatsheet iOS
+---
 
 `public convenience init(format predicateFormat: String, _ args: CVarArg...)`
 
