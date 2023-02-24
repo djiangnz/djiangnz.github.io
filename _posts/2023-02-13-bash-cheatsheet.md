@@ -143,8 +143,8 @@ echo "${Fruits[@]:3:2}"       # Range (from position 3, length 2)
 echo "${!Fruits[@]}"          # Keys of all elements, space-separated
 
 # Iteration
-for i in "${arrayName[@]}"; do
-  echo "$i"
+for name in "${arrayName[@]}"; do
+  echo "$name"
 done
 ```
 
@@ -171,6 +171,7 @@ unset sounds[dog]     # Delete dog
 for val in "${sounds[@]}"; do
   echo "$val"
 done
+
 # Iterate over keys
 for key in "${!sounds[@]}"; do
   echo "$key"
@@ -248,7 +249,7 @@ while read -r line; do
 done <file.txt
 
 # C-like forloop
-for ((i = 0 ; i < 100 ; i++)); do
+for (( i = 0; i < 100; i++ )); do
   echo "$i"
 done
 
@@ -257,6 +258,10 @@ for i in {1..10..2}; do
     echo "Welcome $i"
 done
 
+# Infinite loops
+for (( ; ; )); do
+   echo "infinite loops"
+done
 ```
 
 # Functions
