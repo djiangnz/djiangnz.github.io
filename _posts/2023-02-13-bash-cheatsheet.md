@@ -46,7 +46,7 @@ c=''   # null variables (Or c="" Or c=)
 ## Basics
 
 ```bash
-name="John"
+name="John"           # If value is not given, the variable is assigned the null string
 echo "${name}"
 echo "${name/J/j}"    # "john" (substitution)
 echo "${name:0:2}"    # "Jo" (slicing)
@@ -280,17 +280,23 @@ myfunc() {
 result=$(myfunc)
 ```
 
-## Arguments
+# [Built-in shell variables](http://linuxsig.org/files/bash_scripting.html)
 
-|      |                                                |
-| ---- | ---------------------------------------------- |
-| `$#` | Number of arguments                            |
-| `$*` | All positional arguments (as a single word)    |
-| `$@` | All positional arguments (as separate strings) |
-| `$1` | First argument                                 |
-| `$_` | Last argument of the previous command          |
+|Variable|Use|
+|---|---|
+|`$#`|number of command-line arguments that were passed to the shell program.|
+|`$1`|`n`th argument|
+|`$?`|exit value of the last command that was executed. 0 means no issues|
+|`$0`|name of the shell program. e.g. bash|
+|`"$*"`|arguments that were entered on the command line ($1 $2 ...)|
+|`"$@"`|arguments that were entered on the command line, individually quoted ("$1" "$2" ...)|
+|`$!`|process ID of the job most recently placed into the background|
 
-> `$@` and `$*` must be quoted, See [Special parameters](https://wiki.bash-hackers.org/syntax/shellvars#special_parameters_and_shell_variables)
+> - `"$@"` and `"$*"` must be quoted
+> - `"$@"` is not bash specific and should work with any POSIX shell
+> - `"$*"` expands to the positional parameters, starting from one. When the expansion occurs within double quotes, it expands to a single word with the value of each parameter separated by the first character of the `IFS` special variable. That is, `"$*"` is equivalent to  `"$1c$2c..."`, where `c` is the first character of the value of the `IFS` variable. If `IFS` is unset, the parameters are separated by spaces. If IFS is null, the parameters are joined without intervening separators.
+> - `"$@"` expands to the positional parameters, starting from one. When the expansion occurs within double quotes, each parameter expands to a separate word. That is, `"$@"` is equivalent to `"$1" "$2" ...` If the double-quoted expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the original word, and the expansion of the last parameter is joined with the last part of the original word. When there are no positional parameters,  `"$@"` and $@ expand to nothing (i.e., they are removed).
+> - [bash(1) - Linux man page](https://linux.die.net/man/1/bash)
 
 # Miscellaneous
 
