@@ -201,7 +201,7 @@ else
 fi
 ```
 
-|                          |                       |
+|       Condition         |       Expressions       |
 | ------------------------ | --------------------- |
 | `[[ -z STRING ]]`        | Empty string          |
 | `[[ -n STRING ]]`        | Not empty string      |
@@ -221,7 +221,7 @@ fi
 
 ## File Conditions
 
-|                         |                         |
+|       Condition         |       Expressions       |
 | ----------------------- | ----------------------- |
 | `[[ -e FILE ]]`         | Exists                  |
 | `[[ -r FILE ]]`         | Readable                |
@@ -294,8 +294,8 @@ result=$(myfunc)
 
 > - `"$@"` and `"$*"` must be quoted
 > - `"$@"` is not bash specific and should work with any POSIX shell
-> - `"$*"` expands to the positional parameters, starting from one. When the expansion occurs within double quotes, it expands to a single word with the value of each parameter separated by the first character of the `IFS` special variable. That is, `"$*"` is equivalent to  `"$1c$2c..."`, where `c` is the first character of the value of the `IFS` variable. If `IFS` is unset, the parameters are separated by spaces. If IFS is null, the parameters are joined without intervening separators.
-> - `"$@"` expands to the positional parameters, starting from one. When the expansion occurs within double quotes, each parameter expands to a separate word. That is, `"$@"` is equivalent to `"$1" "$2" ...` If the double-quoted expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the original word, and the expansion of the last parameter is joined with the last part of the original word. When there are no positional parameters,  `"$@"` and $@ expand to nothing (i.e., they are removed).
+> - `"$*"` expands to the positional parameters, starting from one. When the expansion occurs within **double quotes**, it expands to a single word with the value of each parameter separated by the first character of the `IFS` special variable. That is, `"$*"` is equivalent to  `"$1c$2c..."`, where `c` is the first character of the value of the `IFS` variable. If `IFS` is unset, the parameters are separated by spaces. If `IFS` is null, the parameters are joined without intervening separators.
+> - `"$@"` expands to the positional parameters, starting from one. When the expansion occurs within **double quotes**, each parameter expands to a separate word. That is, `"$@"` is equivalent to `"$1" "$2" ...` If the double-quoted expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the original word, and the expansion of the last parameter is joined with the last part of the original word. When there are no positional parameters, `"$@"` and `$@` expand to nothing (i.e., they are removed).
 > - [bash(1) - Linux man page](https://linux.die.net/man/1/bash)
 
 # Miscellaneous
