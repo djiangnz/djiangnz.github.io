@@ -355,3 +355,7 @@ while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
 esac; shift; done
 if [[ "$1" == '--' ]]; then shift; fi
 ```
+
+## IFS
+
+The Internal Field Separator that is used for word splitting after expansion and to split lines into words with the read builtin command. The default value is ''<space><tab><newline>''.
