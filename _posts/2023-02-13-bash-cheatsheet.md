@@ -359,3 +359,44 @@ if [[ "$1" == '--' ]]; then shift; fi
 ## IFS
 
 The Internal Field Separator that is used for word splitting after expansion and to split lines into words with the read builtin command. The default value is ''<space><tab><newline>''.
+
+## [Examples](https://www.thegeekstuff.com/2010/05/bash-shell-special-parameters/)
+
+```bash
+$ cat expan.sh
+#!/bin/bash
+
+export IFS='-'
+
+cnt=1
+
+# Printing the data available in $*
+echo "Values of \"\$*\":"
+for arg in "$*"
+do
+  echo "Arg #$cnt= $arg"
+  let "cnt+=1"
+done
+
+cnt=1
+
+# Printing the data available in $@
+echo "Values of \"\$@\":"
+for arg in "$@"
+do
+  echo "Arg #$cnt= $arg"
+  let "cnt+=1"
+done
+```
+
+execute the expan.sh
+
+```bash
+$ ./expan.sh "This is" 2 3
+Values of "$*":
+Arg #1= This is-2-3
+Values of "$@":
+Arg #1= This is
+Arg #2= 2
+Arg #3= 3
+```
