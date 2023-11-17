@@ -10,7 +10,7 @@ tags: cheatsheet bash
 
 [bash online](https://replit.com/languages/bash)
 
-# [Options](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
+## [Options](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
 
 ```bash
 set -o noclobber  # Avoid overlay files (echo "hi" > foo)
@@ -25,7 +25,7 @@ set -x            # Print out commands before executing them.
 >
 > `-` turn on
 
-# String quotes
+## String quotes
 
 ```bash
 name="John"
@@ -33,7 +33,7 @@ echo "Hi $name"  # Hi John
 echo 'Hi $name'  # Hi $name
 ```
 
-# Variable Types
+## Variable Types
 
 ```bash
 a=2334 # Integer
@@ -41,9 +41,9 @@ b=BB34 # String
 c=''   # null variables (Or c="" Or c=)
 ```
 
-# Parameter Expansions
+## Parameter Expansions
 
-## Basics
+### Basics
 
 ```bash
 name="John"           # If value is not given, the variable is assigned the null string
@@ -64,7 +64,7 @@ other_variable="variable"
 echo ${!other_variable} # Some string
 ```
 
-## Default Values
+### Default Values
 
 ```bash
 ${foo:-val}     # $foo, or val if unset (or null)
@@ -73,7 +73,7 @@ ${foo:=val}     # Set $foo to val if unset (or null)
 ${foo:?message} # Show error message and exit if $foo is unset (or null)
 ```
 
-## Substitution
+### Substitution
 
 ```bash
 str="/path/to/foo.cpp"
@@ -93,7 +93,7 @@ base=${src##*/}       # "foo.cpp" (basepath)
 dir=${src%$base}      # "/path/to/" (dirpath)
 ```
 
-## Manipulation
+### Manipulation
 
 ```bash
 str="HELLO WORLD!"
@@ -105,7 +105,7 @@ echo "${str^}"   # "Hello world!" (uppercase 1st letter)
 echo "${str^^}"  # "HELLO WORLD!" (all uppercase)
 ```
 
-# Brace Expansion {...}
+## Brace Expansion {...}
 
 ```bash
 # used to generate arbitrary strings:
@@ -114,7 +114,7 @@ echo {a..z} # a b c d e f g h i j k l m n
 echo {A,B}.js # Same as A.js B.js
 ```
 
-# Array
+## Array
 
 ```bash
 # Defining arrays
@@ -148,7 +148,7 @@ for name in "${arrayName[@]}"; do
 done
 ```
 
-# Dictionaries
+## Dictionaries
 
 ```bash
 # Defining
@@ -178,7 +178,7 @@ for key in "${!sounds[@]}"; do
 done
 ```
 
-# Reading Input
+## Reading Input
 
 ```bash
 echo -n "Proceed? [y/n]: "
@@ -189,9 +189,9 @@ echo "$ans"
 read -n 1 ans    # Just one character
 ```
 
-# Conditionals
+## Conditionals
 
-## Conditions
+### Conditions
 
 ```bash
 if [[ "$name" != "$USER" ]]; then
@@ -219,7 +219,7 @@ fi
 | `[[ X && Y ]]`           | And                   |
 | `[[ X \|\| Y ]]`         | Or                    |
 
-## File Conditions
+### File Conditions
 
 |       Condition         |       Expressions       |
 | ----------------------- | ----------------------- |
@@ -235,7 +235,7 @@ fi
 | `[[ FILE1 -ot FILE2 ]]` | 2 is more recent than 1 |
 | `[[ FILE1 -ef FILE2 ]]` | Same files              |
 
-# Loops
+## Loops
 
 ```bash
 # Basic forloop
@@ -264,7 +264,7 @@ for (( ; ; )); do
 done
 ```
 
-# Functions
+## Functions
 
 ```bash
 # Defining functions
@@ -280,7 +280,7 @@ myfunc() {
 result=$(myfunc)
 ```
 
-# [Built-in shell variables](http://linuxsig.org/files/bash_scripting.html)
+## [Built-in shell variables](http://linuxsig.org/files/bash_scripting.html)
 
 |Variable|Use|
 |---|---|
@@ -298,9 +298,9 @@ result=$(myfunc)
 > - `"$@"` expands to the positional parameters, starting from one. When the expansion occurs within **double quotes**, each parameter expands to a separate word. That is, `"$@"` is equivalent to `"$1" "$2" ...` If the double-quoted expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the original word, and the expansion of the last parameter is joined with the last part of the original word. When there are no positional parameters, `"$@"` and `$@` expand to nothing (i.e., they are removed).
 > - [bash(1) - Linux man page](https://linux.die.net/man/1/bash)
 
-# Miscellaneous
+## Miscellaneous
 
-## Numeric calculations
+### Numeric calculations
 
 ```bash
 $((a + 200))      # Add 200 to $a
@@ -310,14 +310,14 @@ declare -i count  # Declare as type integer
 count+=1          # Increment
 ```
 
-## Subshells
+### Subshells
 
 ```bash
 (cd somedir; echo "I'm now in $PWD")
 pwd # still in first directory
 ```
 
-## Redirection
+### Redirection
 
 ```bash
 python hello.py > output.txt            # stdout to (file)
@@ -332,13 +332,13 @@ python hello.py < foo.txt      # feed foo.txt to stdin for python
 diff <(ls -r) <(ls)            # Compare two stdout without files
 ```
 
-## Directory of script
+### Directory of script
 
 ```bash
 dir=${0%/*}
 ```
 
-## Getting options
+### Getting options
 
 ```bash
 while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
@@ -356,11 +356,11 @@ esac; shift; done
 if [[ "$1" == '--' ]]; then shift; fi
 ```
 
-## IFS
+### IFS
 
 The Internal Field Separator that is used for word splitting after expansion and to split lines into words with the read builtin command. The default value is ''<space><tab><newline>''.
 
-## [Examples](https://www.thegeekstuff.com/2010/05/bash-shell-special-parameters/)
+### [Examples](https://www.thegeekstuff.com/2010/05/bash-shell-special-parameters/)
 
 ```bash
 $ cat expan.sh
