@@ -10,12 +10,12 @@ tags: cheatsheet ruby
 
 > By convention, use snake_case for variable names.
 
-# Falsey
+## Falsey
 
 - `false`
 - `nil`
 
-# Data Types
+## Data Types
 
 ```ruby
 t = 42 # Integer
@@ -23,6 +23,17 @@ t = "Sammy" # String
 t = :sammy # Symbol, Symbols are immutable
 t = true # boolean
 t # nil
+```
+
+### [Range](https://ruby-doc.org/core-2.7.0/Range.html)
+
+```ruby
+(-1..-5).to_a      #=> []
+(-5..-1).to_a      #=> [-5, -4, -3, -2, -1]
+('a'..'e').to_a    #=> ["a", "b", "c", "d", "e"]
+('a'...'e').to_a   #=> ["a", "b", "c", "d"]
+[1, 2, 3, 4, 5][...2]   # => [1, 2]
+[1, 2, 3, 4, 5][2...]   # => [3, 4, 5]
 ```
 
 ## Identifying Data Types
@@ -45,7 +56,7 @@ if data.is_a? String
 end
 ```
 
-# String interpolation
+## String interpolation
 
 ```ruby
 "I can #{placeholder} when using double quoted strings"
@@ -58,7 +69,7 @@ end
 'hello' << ' world' # "hello world"
 ```
 
-# Arrays
+## Arrays
 
 ```ruby
 # Defining
@@ -80,9 +91,13 @@ array[12] # nil
 # to call a simple method on all array items.
 upcased = ['Watch', 'these', 'words', 'get', 'upcased'].map(&:upcase)
 sum = [1, 2, 3, 4, 5].reduce(&:+)
+
+# Magic
+Array(1)      # => [1]
+Array([1, 2]) # => [1, 2]
 ```
 
-# Hashes
+## Hashes
 
 ```ruby
 # Defining
@@ -109,7 +124,7 @@ hash.key?(:defcon) #=> true
 hash.value?(3) #=> true
 ```
 
-# Loops
+## Loops
 
 ```ruby
 (1..5).each { |counter| puts "iteration #{counter}" }
@@ -141,7 +156,7 @@ while counter <= 5 do
 end
 ```
 
-# Cases
+## Cases
 
 ```ruby
 grade = 82
@@ -155,7 +170,7 @@ else
 end
 ```
 
-# Exception handling
+## Exception handling
 
 ```ruby
 begin
@@ -172,7 +187,7 @@ ensure
 end
 ```
 
-# Methods
+## Methods
 
 ```ruby
 def double(x)
@@ -188,7 +203,7 @@ end
 guests { |n| "You have #{n} guests." }
 ```
 
-# yield
+## yield
 
 ```ruby
 def surround
@@ -199,8 +214,6 @@ end
 
 surround { puts 'hello world' }
 ```
-
-# Classes
 
 ## Classes
 
@@ -240,7 +253,7 @@ class Human
 end
 ```
 
-## Variables
+### Variables
 
 ```ruby
 # Variables that start with $ have global scope.
@@ -318,7 +331,7 @@ Something.new.bar #=> NoMethodError: undefined method `bar'
 Something.new.qux #=> "qux"
 ```
 
-# Syntactic Sugar
+## Syntactic Sugar
 
 ```ruby
 10 * 5 is 10.* 5
@@ -327,6 +340,25 @@ Something.new.qux #=> "qux"
 array[0] is array.[] 0
 ```
 
-# Links
+## [Type Conversion](https://kddnewton.com/2021/09/09/ruby-type-conversion.html)
+
+```ruby
+to_a/to_ary   #=> converting to Array
+to_h/to_hash  #=> converting to Hash
+to_s/to_str   #=> converting to String
+to_sym        #=> converting to Symbol
+to_proc       #=> converting to Proc
+to_io         #=> converting to IO
+to_i/to_int   #=> converting to Integer
+to_f          #=> converting to Float
+to_c          #=> converting to Complex, only used by the Kernel.Complex method
+to_r          #=> converting to Rational number, most used in the Time class
+to_regexp     #=> converting to Regexp
+to_path       #=> converting to a String to be used to represent a filepath
+to_enum       #=> converting to Enumerable
+to_open       #=> exclusively used by Kernel #open to convert the object its attempting to open into a URL or path
+```
+
+## Links
 
 - [learnxinyminutes](https://learnxinyminutes.com/docs/ruby/)
